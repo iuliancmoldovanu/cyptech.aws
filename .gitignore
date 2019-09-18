@@ -29,7 +29,6 @@ error_log
 install_nvm.sh
 package-lock.json
 sql/
-webpack.mix.js
 
 # But not these files...
 !.gitignore
