@@ -1,0 +1,95 @@
+body {
+    background: #464646 url("/img/body_background.jpg") fixed no-repeat center;
+    background-size: cover;
+    min-height: 100%;
+}
+
+/* Custom navigation bar overwriting bootstrap */
+.navbar-brand{
+    padding: 0px 15px !important;
+}
+
+.navbar-brand img{
+    height: 50px;
+    width: 50px;
+}
+
+.navbar-default{
+    background-color: #568a56;
+    border-color: #405b2d;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: #0d1440;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #0d1440;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: #405b2d;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: inherit;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #ffffff;
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    color: #0d1440;
+}
+
+
+/* Custom login panel overwriting bootstrap */
+.panel{
+    border-radius: 6px;
+}
+.panel-default {
+    border-color: #0d1440;
+    background-color: transparent;
+}
+
+.panel-body {
+    padding: 15px;
+    background-color: rgba(150, 200, 228, 0.5);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.panel-default>.panel-heading {
+    color: #ffffff;
+    background-color: #0d79b7;
+    border-color: #0d1440;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.panel-default {
+    border-color: #0d1440;
+}
+
+.form-control {
+    border: 1px solid #0d79b7;
+}
+
+.form-horizontal .checkbox, .form-horizontal .radio {
+    min-height: 27px;
+    float: right;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #568a56;
+    border-color: #355935;
+}
+
+
+.btn-success:focus, .btn-success:hover {
+    color: #fff;
+    background-color: #355935;
+    border-color: #568a56;
+}
+

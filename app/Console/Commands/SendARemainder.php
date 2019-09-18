@@ -1,0 +1,46 @@
+<?php
+
+namespace App\Console\Commands;
+
+use Illuminate\Console\Command;
+
+
+
+class SendARemainder extends Command
+{
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'send_remainder_weekly';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Send every week a remainder to all active players';
+
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Execute the console command.
+     *
+     * @return mixed
+     */
+    public function handle()
+    {
+//        echo "hello there";
+        \Log::info("triggered");
+
+    }
+}
