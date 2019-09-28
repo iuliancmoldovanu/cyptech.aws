@@ -72,7 +72,7 @@ $(document).on('change', '#players_list', function(){
     loadPlayerStats();
 });
 $(document).on('change', '#years_list', function(){
-    loadPlayerStats($(this).val());
+    loadPlayerStats();
 });
 
 
