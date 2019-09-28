@@ -284,7 +284,7 @@
 							if ( Player::isPlayersNeeded () )
 							{
 								$player->title_icon = 'yellow'; // set color of icon
-								$player->title = 'Waiting confirmation'; // set the title next to the icon
+								$player->title = 'Waiting List'; // set the title next to the icon
 								$player->body_icon = 'fa-spinner fa-spin'; // set the icon for body
 								$player->body = 'Confirm until ' . WeekDay::getPlayingDay ()->day . ' by ' . WeekDay::getPlayingDay ()->last_confirm_time;  // set the text for body
 								// buttons at the bottom of info player

@@ -12,6 +12,7 @@
          */
         Route::get( '/syslog/clear', 'MasterController@clearLog');
         Route::get('/syslog/{index?}', 'MasterController@readLog');
+
     });
 
         // Admin
@@ -47,6 +48,8 @@
 
         Route::get('ranking', 'PlayerController@getPlayersRanking');
         Route::get('players/list', 'PlayerController@getPlayersList');
+        Route::post('suspend', 'PlayerController@suspendPlayer');
+        Route::post('delete', 'PlayerController@deletePlayer');
     });
 
 
@@ -65,5 +68,7 @@
 
         // Email
         Route::get ( '/send', 'MailController@send' );
+        Route::get ( '/result_games', 'PlayerController@resultGames' );
+        Route::get ( '/result_games/table/{player}', 'PlayerController@tableResultPlayer' );
     });
 

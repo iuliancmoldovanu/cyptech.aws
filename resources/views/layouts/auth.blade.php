@@ -21,6 +21,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{{ asset('img/favicon/ms-icon-144x144.png') }}">
     <meta name="theme-color" content="#ffffff">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
@@ -293,6 +294,9 @@
     </script>
     <script src="{{ asset('js/admin.js') }}"></script>
     <script src="{{ asset('js/site.js') }}"></script>
+@show
+
+@section('custom')
     <script src="{{ asset('js/dashboard.js') }}"></script>
 @show
 

@@ -1,3 +1,9 @@
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+})
+
 /** Session timeout */
 let session = ((session_start_at+lifetime)-(Math.floor(Date.now()/1000)))*1000; // total duration of this session in milliseconds
 let run = session-60000 <= 0 ? 1000 : session-60000; // setInterval when reach 60000 milliseconds

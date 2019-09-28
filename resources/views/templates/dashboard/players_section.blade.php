@@ -12,13 +12,13 @@
                     @foreach($players as $key => $play)
                         @if($play->active)
                             @if($play->orderList == 1)
-                                <p class="text-primary">{{ $play->title }}</p>
+                                <p class="text-action">{{ $play->title }}</p>
                             @endif
                             <p class="text-muted">
                                 <small>&nbsp<i class="fa fa-circle text-{{ $play->title_icon }}"></i>&nbsp
                                     {{ $play->orderList }}.
-                                    {{ $play->user->username }}
-                                    ({{ $play->user->name }})
+                                    <a href="{{ asset('/result_games#'.$play->id) }}"> <u>{{ $play->user->username }}
+                                    ({{ $play->user->name }})</u></a>
                                     {!! ($play->unavailable_for) ? ' - <span class="label label-danger label-outline" style="border-radius: 1em !important; color: #f96868 !important; background-color: transparent !important; padding-bottom: 1px !important;">' . $play->unavailable_for . '</span>' : '' !!}
                                 </small>
                             </p>
@@ -46,11 +46,14 @@
                     <p style="margin: 0">
                         @if($team_player['current_team'] == 'green')
                             <?php $greenSkill += $team_player['skill_level']; ?>
-                            <label style="margin-top: 5px; padding: 0 3px" class="label label-success label-round">{{ $team_player['skill_level'] }}</label>
-                            ({{ substr($team_player['player_position'], 0, 1) }})
-                            <span class="pull-right" style="padding: 0;">
-                                {{ $team_player['user']['username'] }}
-                            </span>
+                                <a href="{{ asset('/result_games#' . $play->id) }}"><u>
+                                    <label style="margin-top: 5px; padding: 0 3px" class="label label-success label-round">{{ $team_player['skill_level'] }}</label>
+                                    ({{ substr($team_player['player_position'], 0, 1) }})
+                                    <span class="pull-right" style="padding: 0;">
+                                        {{ $team_player['user']['username'] }}
+                                    </span>
+                                    </u>
+                                </a>
 
                         @endif
                     </p>

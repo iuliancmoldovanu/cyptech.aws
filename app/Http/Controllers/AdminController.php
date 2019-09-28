@@ -420,16 +420,22 @@
 		
 		public function setDisablePlayer($id) {
 			$player = Player::find($id);
+			if($player === null){
+                \Response::json([], 404);
+            }
 			$player->active = false;
-			$player->status = 'SUSPENDED';
+			$player->status = 'suspended';
 			$player->save();
 			return \Response::json(['status' => 'OK']);
 		}
 		
 		public function setActivePlayer($id) {
 			$player = Player::find($id);
+            if($player === null){
+                \Response::json([], 404);
+            }
 			$player->active = true;
-			$player->status = 'WAITING';
+			$player->status = 'waiting';
 			$player->save();
 			return \Response::json(['status' => 'OK']);
 		}
