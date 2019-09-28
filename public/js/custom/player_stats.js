@@ -1,4 +1,3 @@
-
 var onLoadData = {
     player_id: window.location.hash.substring(1),
     reload: true,
@@ -6,9 +5,10 @@ var onLoadData = {
     player: "Not loaded",
     years: []
 };
-var loadPlayerStats = function(year){
+var loadPlayerStats = function(){
     if(onLoadData.player_id) {
-        year = (typeof year === "undefined" ? $("#years_list").selectpicker("val") : year);
+        var year = $("#years_list").selectpicker("val");
+        year = year === null ? 0 : year;
         $("#player_stats_tbl").bootstrapTable('destroy').bootstrapTable({
             url: '/result_games/table/' + onLoadData.player_id + '?load='+onLoadData.reload+'&year='+ year,
             onLoadSuccess: function (data) {
@@ -66,17 +66,6 @@ var loadPlayerStats = function(year){
     }
 };
 loadPlayerStats();
-
-/**
- * Show expanded row table in more detail
- * @param index
- * @param row
- * @returns {*}
- */
-function detailViewExpandable( index, row ){
-    console.log(row);
-    return row;
-}
 
 $(document).on('change', '#players_list', function(){
     onLoadData.player_id = $(this).val();
