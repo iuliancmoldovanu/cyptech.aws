@@ -77,6 +77,7 @@
                                            data-side-pagination="server"
                                            data-minimum-count-columns="2"
                                            data-show-pagination-switch="false"
+                                           data-detail-view="true"
                                            data-pagination="true"
                                            data-total-field='total'
                                            data-sort-order="desc"

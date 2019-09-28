@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 
 class PlayerController extends Controller
 {
+    private $player = null;
+
     public function getPlayersRanking() {
         VisitorsBuilder::createVisitor();
         return view('users.ranking', [
@@ -133,51 +135,60 @@ class PlayerController extends Controller
     }
 
     public function suspendPlayer(Request $request) {
-        $id = $request->input("player_id", false);
 
-        if(!$id){
+        if($this->validateRequest($request) > 200){
             return \Response::json( [], 404 );
         }
 
-        $ThisPlayer = Player::with('user')->find($id);
-        if($ThisPlayer === null){
-            return \Response::json( [], 404 );
-        }
+        $this->player->status = "suspended";
+        $this->player->active = false;
+        $this->player->save();
 
-        if($ThisPlayer->user->levelAccess() > 1){
-            return \Response::json( [], 403 );
-        }
-
-        $ThisPlayer->status = "suspended";
-        $ThisPlayer->active = false;
-        $ThisPlayer->save();
-        \Log::info(Auth::user()->username . " suspended player " . $ThisPlayer->user->username);
+        \Log::info(Auth::user()->username . " suspended player " . $this->player->user->username);
 
         return \Response::json( [], 200 );
     }
 
     public function deletePlayer(Request $request) {
-        $id = $request->input("player_id", false);
 
-        if(!$id){
+        if($this->validateRequest($request) > 200){
             return \Response::json( [], 404 );
         }
+        $authUser = Auth::user()->username;
 
-        $ThisPlayer = Player::with('user')->find($id);
-        if($ThisPlayer === null){
-            return \Response::json( [], 404 );
+        try{
+            // delete related
+            $this->player->user()->delete();
+            $this->player->delete();
+        }catch (\Exception $e){
+            \Log::error($authUser . " cannot deleted player ", [$e]);
         }
 
-        if($ThisPlayer->user->levelAccess() > 1){
-            return \Response::json( [], 403 );
-        }
-
-        // delete related
-        $ThisPlayer->user()->delete();
-        $ThisPlayer->delete();
-
-        \Log::info(Auth::user()->username . " deleted player " . $ThisPlayer->user->username);
+        \Log::info($authUser . " deleted player " . $this->player->user->username);
 
         return \Response::json( [], 200 );
+    }
+
+    /**
+     * @param Request $request
+     * @return int
+     */
+    private function validateRequest(Request $request) : int
+    {
+        $id = $request->input("player_id", false);
+
+        if (!$id) {
+            return 404;
+        }
+
+        $this->player = Player::with('user')->find($id);
+        if ($this->player === null) {
+            return 404;
+        }
+
+        if ($this->player->user->levelAccess() > 1) {
+            return 403;
+        }
+        return 200;
     }
 }
