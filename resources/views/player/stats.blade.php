@@ -59,12 +59,12 @@
 
                                         <div class="row">
                                             <div class="col-xs-6">
-                                                <select id="players_list" class="selectpicker show-tick show-menu-arrow"
+                                                <select id="players_list" class="selectpicker dropup show-tick show-menu-arrow"
                                                         data-live-search="true" data-style="btn-default" data-container="body"
                                                         data-size="5" data-width="100%"></select>
                                             </div>
                                             <div class="col-xs-6">
-                                                <select id="years_list" class="selectpicker show-tick show-menu-arrow"
+                                                <select id="years_list" class="selectpicker show-tick show-menu-arrow dropup"
                                                         data-style="btn-default" data-container="body"
                                                         data-size="5" data-width="100%"></select>
                                             </div>

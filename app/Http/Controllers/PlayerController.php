@@ -47,7 +47,7 @@ class PlayerController extends Controller
         $limit = $r->get('limit', 10);
         $offset = $r->get('offset', 0);
         $year = $r->get('year', 0);
-        $year = $year == 0 ? "" : " AND YEAR(g.starts_at) = {$year} ";
+        $year = (int) $year === 0 ? "" : " AND YEAR(g.starts_at) = {$year} ";
 
         $games = DB::select(
             "SELECT gp.player_id, gp.game_id, ".
@@ -97,7 +97,7 @@ class PlayerController extends Controller
         }
 
         // suspend a player when not played for more than 3 mouths and apply only to role players
-        $allowUpdate = Carbon::now()->subQuarter()->gt(Carbon::parse($lastDate)) && $player->user->levelAccess() < 2;
+        $allowUpdate = Carbon::now()->subQuarter()->gt(Carbon::parse($lastDate)) && $player->user->levelAccess() < 2 && (int) $r->get('year', 0) === 0;
 
         if($r->input("load", "true") === "true"){
             $years = DB::select(
