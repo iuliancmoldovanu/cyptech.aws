@@ -103,8 +103,7 @@
 			$players = Player::all ();
 			// get current game that has not teams generated
 			$last_game = Game::getCurrentWeekGame ();
-			try
-			{
+			try {
 				foreach ( $players as $player )
 				{
 					if ( $player->status == 'available' )
@@ -125,9 +124,12 @@
 						{
 							$player->games_lost += 1;
 						}
-						$player->total_games += 1;
-						$player->status = 'waiting';
-						$player->current_team = null;
+
+                        $this->updateGamePlayer($player, $last_game);
+
+                        $player->total_games += 1;
+                        $player->status = 'waiting';
+                        $player->current_team = null;
 					}
 					if ( $player->status == 'unavailable' )
 					{
@@ -149,12 +151,14 @@
 				$last_game->current = 0;
 				$last_game->status = 'completed';
 				$last_game->save ();
+
                 \Log::info(Auth::user()->username . " on ".Carbon::now()." completed the game");
 
-                Game::createGame();
+//                Game::createGame();
                 return \Response::json(['status' => "success", 'message' => "Current game has been completed"]);
 			} catch ( \Exception $e )
 			{
+                \Log::error($e);
                 return \Response::json(['status' => "error", 'message' => "Changes has not been applied to the current game"]);
 			}
 		}
@@ -439,4 +443,20 @@
 			$player->save();
 			return \Response::json(['status' => 'OK']);
 		}
-	}
+
+        /**
+         * @param $player
+         * @param $last_game
+         */
+        private function updateGamePlayer($player, $last_game): void
+        {
+            $playerId = $player->id ?? 0;
+            $last_game_id = $last_game->id ?? 0;
+            if ($playerId > 0 && $last_game_id > 0) {
+                \DB::statement(
+                    "INSERT INTO game_player (game_id, player_id, team) " .
+                    "VALUES ({$last_game_id}, {$playerId}, '{$player->current_team}')"
+                );
+            }
+        }
+    }

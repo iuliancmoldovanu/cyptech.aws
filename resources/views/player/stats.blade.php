@@ -84,7 +84,7 @@
                                            data-page-list="[10, 25, 50, 100]">
                                         <thead>
                                         <tr>
-                                            <th data-field="game_id" data-sortable="true">Game ID</th>
+                                            <th data-field="game_id" data-sortable="true">#</th>
                                             <th data-field="status" data-sortable="true">Result</th>
                                             <th data-field="starts_at" data-sortable="true">Started Date/Time</th>
                                         </tr>

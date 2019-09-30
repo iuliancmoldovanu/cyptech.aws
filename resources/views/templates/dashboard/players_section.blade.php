@@ -46,15 +46,14 @@
                     <p style="margin: 0">
                         @if($team_player['current_team'] == 'green')
                             <?php $greenSkill += $team_player['skill_level']; ?>
-                                <a href="{{ asset('/result_games#' . $play->id) }}"><u>
+
                                     <label style="margin-top: 5px; padding: 0 3px" class="label label-success label-round">{{ $team_player['skill_level'] }}</label>
-                                    ({{ substr($team_player['player_position'], 0, 1) }})
-                                    <span class="pull-right" style="padding: 0;">
-                                        {{ $team_player['user']['username'] }}
-                                    </span>
+                                        ({{ substr($team_player['player_position'], 0, 1) }})
+                                <a href="{{ asset('/result_games#' . $team_player->id) }}">
+                                    <u>
+                                    <span class="pull-right" style="padding: 0;">{{ $team_player['user']['username'] }}</span>
                                     </u>
                                 </a>
-
                         @endif
                     </p>
                 @endforeach
@@ -66,12 +65,13 @@
                     <p style="margin: 0">
                         @if($team_player['current_team'] == 'red')
                             <?php $redSkill += $team_player['skill_level']; ?>
-                        <span class="pull-left" style="padding: 0;">
-                            {{ $team_player['user']['username'] }}
-                        </span>
+                                <a href="{{ asset('/result_games#' . $team_player->id) }}">
+                                    <u>
+                                    <span class="pull-left" style="padding: 0;">{{ $team_player['user']['username'] }}</span>
+                                    </u>
+                                </a>
                                 ({{ substr($team_player['player_position'], 0, 1) }})
                                 <label style="margin-top: 5px; padding: 0 3px" class="label label-danger label-round">{{ $team_player['skill_level'] }}</label>
-
                         @endif
                     </p>
                 @endforeach
