@@ -447,7 +447,7 @@
         /**
          * @param $player
          * @param $last_game
-         * TESTING JENKINS UPLOAD TO SERVER
+         * TESTING JENKINS UPLOAD TO SERVER, second time
          */
         private function updateGamePlayer($player, $last_game): void
         {
