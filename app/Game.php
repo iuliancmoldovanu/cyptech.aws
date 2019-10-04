@@ -37,6 +37,9 @@
 		public function players(){
 			return $this->belongsToMany(Player::class)->withPivot('team');
 		}
+
+		private static $generateTeamsCounter = 0;
+		private static $teamDifference = 1;
 		
 		/**
 		 * @return mixed - multidimensional array
@@ -103,10 +106,19 @@
 			$balance_teams = abs ( $players["green"]["points"] - $players["red"]["points"] );
 			// get the difference between the goalkeepers just to make sure one team has at least one goalkeeper
 			$balance_goalkeepers = abs ( $players["green"]["goalkeeper"] - $players["red"]["goalkeeper"] );
+			if(self::$generateTeamsCounter > 100){ // if teams not balanced increase difference
+                self::$teamDifference = 2;
+                \Log::error("teamDifference static variable increased to 2");
+            }
+
+
 			// check if the difference between teams are bigger then 1
-			if ( $balance_teams > 2 || $balance_goalkeepers > 1 ) {
+			if ( $balance_teams > self::$teamDifference || $balance_goalkeepers > 1 ) {
+                self::$generateTeamsCounter++;
 				return self::generateTeams (); // run this method again
 			}
+
+            \Log::info("Teams generate after " . self::$generateTeamsCounter . " attempts.");
 
             // update players to them teams
             foreach ( $players as $name => $teams ) {
