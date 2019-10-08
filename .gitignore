@@ -5,9 +5,7 @@ Homestead.yaml
 Homestead.json
 .env
 .env.example
-.gitignore
 .ftpquota
-.gitattributes
 .idea/
 .htaccess
 artisan
