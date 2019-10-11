@@ -29,7 +29,7 @@
 				if ( $restrictedDay->day == date ( 'l' ) )
 				{
 					// select current day row
-					if ( $restrictedDay->day_match && date ( 'H:i' ) > substr ( $restrictedDay->last_confirm_time, 0, 5 ) )
+					if ( $restrictedDay->day_match && date ( 'H:i' ) >= substr ( $restrictedDay->last_confirm_time, 0, 5 ) )
 					{
 						// dead line has passed
 						return 'block'; // block all players
