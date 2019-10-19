@@ -33,9 +33,11 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-envelope"></i> Send Password Reset Link
+                                <button type="submit" class="btn btn-raised btn-primary pull-right">
+                                    <i class="fa fa-btn fa-envelope"></i>Send Password Reset Link
                                 </button>
+
+                                <a href="{{url('/login')}}" class="btn btn-success btn-raised pull-left">Back to Login</a>
                             </div>
                         </div>
                     </form>
