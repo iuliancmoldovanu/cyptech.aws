@@ -12,6 +12,7 @@
          */
         Route::get( '/syslog/clear', 'MasterController@clearLog');
         Route::get('/syslog/{index?}', 'MasterController@readLog');
+        Route::get('phpinfo', function(){ phpinfo(); });
 
     });
 
