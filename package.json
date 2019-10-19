@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "NODE_ENV=development webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "NODE_ENV=development webpack --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
+    "bootstrap-sass": "^3.0.0",
+    "gulp": "^4.0.2",
+    "laravel-elixir": "^5.0.0",
+    "laravel-mix": "^4.1.2",
+    "resolve-url-loader": "^3.1.0",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.35.3"
+  }
+}

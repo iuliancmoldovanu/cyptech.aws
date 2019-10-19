@@ -1,0 +1,42 @@
+[02-Apr-2017 10:20:27 Europe/London] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/ciupicu/public_html/cyptech.uk/app/Http/Controllers/MailController.php on line 29
+[02-Apr-2017 10:20:39 Europe/London] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/ciupicu/public_html/cyptech.uk/app/Http/Controllers/MailController.php on line 29
+[02-Apr-2017 10:21:19 Europe/London] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 125042641 bytes) in /home/ciupicu/public_html/cyptech.uk/app/Http/Controllers/MailController.php on line 28
+[02-Apr-2017 17:40:17 Europe/London] PHP Fatal error:  Call to a member function player() on integer in /home/ciupicu/public_html/cyptech.uk/app/Http/Controllers/AppController.php on line 115
+[02-Apr-2017 17:40:21 Europe/London] PHP Fatal error:  Call to a member function player() on integer in /home/ciupicu/public_html/cyptech.uk/app/Http/Controllers/AppController.php on line 115
+[02-Apr-2017 17:40:27 Europe/London] PHP Fatal error:  Call to a member function player() on integer in /home/ciupicu/public_html/cyptech.uk/app/Http/Controllers/AppController.php on line 115
+[08-Apr-2017 07:09:22 Europe/London] PHP Parse error:  syntax error, unexpected ';' in /home/ciupicu/public_html/cyptech.uk/app/Http/routes.php on line 31
+[08-Apr-2017 07:11:50 Europe/London] PHP Parse error:  syntax error, unexpected ';' in /home/ciupicu/public_html/cyptech.uk/app/Http/routes.php on line 29
+[14-Apr-2017 14:34:34 Europe/London] PHP Parse error:  syntax error, unexpected ')' in /home/ciupicu/public_html/cyptech.uk/app/Http/routes.php on line 27
+[14-Apr-2017 14:53:47 Europe/London] PHP Parse error:  syntax error, unexpected ')' in /home/ciupicu/public_html/cyptech.uk/app/Player.php on line 133
+[30-Dec-2017 13:33:00 Europe/London] PHP Parse error:  syntax error, unexpected end of file in /home/ciupicu/public_html/cyptech.uk/storage/framework/views/435b80efa7d478b7d7e4c28ed5ef672b66df9e01.php on line 271
+[30-Dec-2017 13:33:13 Europe/London] PHP Parse error:  syntax error, unexpected end of file in /home/ciupicu/public_html/cyptech.uk/storage/framework/views/435b80efa7d478b7d7e4c28ed5ef672b66df9e01.php on line 271
+[30-Dec-2017 13:33:16 Europe/London] PHP Parse error:  syntax error, unexpected end of file in /home/ciupicu/public_html/cyptech.uk/storage/framework/views/435b80efa7d478b7d7e4c28ed5ef672b66df9e01.php on line 271
+[30-Dec-2017 13:36:00 Europe/London] PHP Parse error:  syntax error, unexpected end of file in /home/ciupicu/public_html/cyptech.uk/storage/framework/views/435b80efa7d478b7d7e4c28ed5ef672b66df9e01.php on line 271
+[30-Dec-2017 13:38:15 Europe/London] PHP Parse error:  syntax error, unexpected end of file in /home/ciupicu/public_html/cyptech.uk/storage/framework/views/435b80efa7d478b7d7e4c28ed5ef672b66df9e01.php on line 271
+[30-Dec-2017 13:38:38 Europe/London] PHP Parse error:  syntax error, unexpected end of file in /home/ciupicu/public_html/cyptech.uk/storage/framework/views/435b80efa7d478b7d7e4c28ed5ef672b66df9e01.php on line 271
+[05-Jan-2018 23:03:29 Europe/London] PHP Fatal error:  Class 'App\WeekDay' not found in /home/ciupicu/public_html/cyptech.uk/app/Http/Controllers/AppController.php on line 37
+[05-Jan-2018 23:05:42 Europe/London] PHP Fatal error:  Class 'App\WeekDay' not found in /home/ciupicu/public_html/cyptech.uk/app/Http/Controllers/AppController.php on line 37
+[06-Jan-2018 12:11:34 Europe/London] PHP Fatal error:  Call to a member function player() on null in /home/ciupicu/public_html/cyptech.uk/app/Http/Controllers/AdminController.php on line 195
+[06-Jan-2018 12:11:35 Europe/London] PHP Fatal error:  Call to a member function player() on null in /home/ciupicu/public_html/cyptech.uk/app/Http/Controllers/AdminController.php on line 195
+[06-Jan-2018 12:11:35 Europe/London] PHP Fatal error:  Call to a member function player() on null in /home/ciupicu/public_html/cyptech.uk/app/Http/Controllers/AdminController.php on line 195
+[06-Jan-2018 12:11:36 Europe/London] PHP Fatal error:  Call to a member function player() on null in /home/ciupicu/public_html/cyptech.uk/app/Http/Controllers/AdminController.php on line 195
+[06-Jan-2018 12:11:36 Europe/London] PHP Fatal error:  Call to a member function player() on null in /home/ciupicu/public_html/cyptech.uk/app/Http/Controllers/AdminController.php on line 195
+[06-Jan-2018 12:11:36 Europe/London] PHP Fatal error:  Call to a member function player() on null in /home/ciupicu/public_html/cyptech.uk/app/Http/Controllers/AdminController.php on line 195
+[06-Jan-2018 12:11:37 Europe/London] PHP Fatal error:  Call to a member function player() on null in /home/ciupicu/public_html/cyptech.uk/app/Http/Controllers/AdminController.php on line 195
+[06-Jan-2018 12:11:37 Europe/London] PHP Fatal error:  Call to a member function player() on null in /home/ciupicu/public_html/cyptech.uk/app/Http/Controllers/AdminController.php on line 195
+[06-Jan-2018 12:11:37 Europe/London] PHP Fatal error:  Call to a member function player() on null in /home/ciupicu/public_html/cyptech.uk/app/Http/Controllers/AdminController.php on line 195
+[06-Jan-2018 12:11:38 Europe/London] PHP Fatal error:  Call to a member function player() on null in /home/ciupicu/public_html/cyptech.uk/app/Http/Controllers/AdminController.php on line 195
+[06-Jan-2018 12:11:38 Europe/London] PHP Fatal error:  Call to a member function player() on null in /home/ciupicu/public_html/cyptech.uk/app/Http/Controllers/AdminController.php on line 195
+[06-Jan-2018 12:44:45 Europe/London] PHP Parse error:  syntax error, unexpected end of file in /home/ciupicu/public_html/cyptech.uk/storage/framework/views/435b80efa7d478b7d7e4c28ed5ef672b66df9e01.php on line 270
+[06-Jan-2018 12:45:06 Europe/London] PHP Parse error:  syntax error, unexpected end of file in /home/ciupicu/public_html/cyptech.uk/storage/framework/views/435b80efa7d478b7d7e4c28ed5ef672b66df9e01.php on line 270
+[06-Jan-2018 12:45:08 Europe/London] PHP Parse error:  syntax error, unexpected end of file in /home/ciupicu/public_html/cyptech.uk/storage/framework/views/435b80efa7d478b7d7e4c28ed5ef672b66df9e01.php on line 270
+[06-Jan-2018 12:45:16 Europe/London] PHP Parse error:  syntax error, unexpected end of file in /home/ciupicu/public_html/cyptech.uk/storage/framework/views/435b80efa7d478b7d7e4c28ed5ef672b66df9e01.php on line 270
+[06-Jan-2018 12:45:31 Europe/London] PHP Parse error:  syntax error, unexpected end of file in /home/ciupicu/public_html/cyptech.uk/storage/framework/views/435b80efa7d478b7d7e4c28ed5ef672b66df9e01.php on line 270
+[06-Jan-2018 12:45:51 Europe/London] PHP Parse error:  syntax error, unexpected end of file in /home/ciupicu/public_html/cyptech.uk/storage/framework/views/435b80efa7d478b7d7e4c28ed5ef672b66df9e01.php on line 270
+[06-Jan-2018 12:56:51 Europe/London] PHP Parse error:  syntax error, unexpected end of file in /home/ciupicu/public_html/cyptech.uk/storage/framework/views/435b80efa7d478b7d7e4c28ed5ef672b66df9e01.php on line 270
+[06-Jan-2018 13:05:59 Europe/London] PHP Parse error:  syntax error, unexpected end of file in /home/ciupicu/public_html/cyptech.uk/storage/framework/views/435b80efa7d478b7d7e4c28ed5ef672b66df9e01.php on line 270
+[06-Jan-2018 14:05:13 Europe/London] PHP Parse error:  syntax error, unexpected end of file in /home/ciupicu/public_html/cyptech.uk/storage/framework/views/435b80efa7d478b7d7e4c28ed5ef672b66df9e01.php on line 270
+[06-Jan-2018 14:08:00 Europe/London] PHP Parse error:  syntax error, unexpected end of file in /home/ciupicu/public_html/cyptech.uk/storage/framework/views/435b80efa7d478b7d7e4c28ed5ef672b66df9e01.php on line 270
+[06-Jan-2018 15:41:10 Europe/London] PHP Fatal error:  Class 'App\Http\Controllers\Input' not found in /home/ciupicu/public_html/cyptech.uk/app/Http/Controllers/AdminController.php on line 204
+[06-Jan-2018 15:43:46 Europe/London] PHP Fatal error:  Class 'App\Http\Controllers\Validator' not found in /home/ciupicu/public_html/cyptech.uk/app/Http/Controllers/AdminController.php on line 205
+[01-Jun-2019 07:35:32 Europe/London] PHP Parse error:  syntax error, unexpected '?' in /home/ciupicu/public_html/cyptech.uk/app/Http/Controllers/AppController.php on line 44

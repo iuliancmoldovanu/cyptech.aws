@@ -1,0 +1,8 @@
+RewriteEngine on
+RewriteBase /
+
+#RewriteCond %{REQUEST_URI} !^/test/
+
+# Rewrite all those to insert /folder
+RewriteRule ^(.*)$ /public/$1 [L]
+
