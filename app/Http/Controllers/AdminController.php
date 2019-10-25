@@ -261,7 +261,7 @@
 
 			return \Response::json(['playerDetails' => $playerDetails]);
 		}
-		
+
 		public function updatePlayerDetails(Request $request, $id) {
 
 			$user = User::find($id);
@@ -288,7 +288,7 @@
 					'errors' => $validator->getMessageBag()->toArray()
 				);
 			}
-			
+
 			$user->update(
 				[
 					'email' => $request->get( 'email' ),
@@ -320,6 +320,9 @@
 
             $status = $request->get( 'status', 'waiting' );
             if($thisPlayer->status != $status){
+                if($request->get( 'status' ) === "available"){
+                    MailController::send(Player::isPlayersNeeded());
+                }
                 $logInfoArr[] = "status:  {$status}, before: {$thisPlayer->status} - now {$status}" ;
             }
 
@@ -354,19 +357,16 @@
             }
 
             VisitorsBuilder::createVisitor("update, username: " . $user->username);
-			if($request->get( 'status' ) === "available"){
-                MailController::send(Player::isPlayersNeeded());
-            }
 			return \Response::json(['status' => "OK"]);
 		}
-		
+
 		public function getCreatePlayer() {
             VisitorsBuilder::createVisitor("player_create");
 		    $authUser = Auth::user();
 			$newPlayerForm = view('admin.includes.player_create', ["authUser" => $authUser])->render();
 			return \Response::json(['newPlayerForm' => $newPlayerForm]);
 		}
-		
+
 		public function createNewPlayer(Request $request) {
 
 			$validator = Validator::make($request->all(), [
@@ -414,14 +414,14 @@
                 \Log::info("Email sent by " . $authUser ." to user email address: " . $user->email . " to activate temp account ");
             }
             VisitorsBuilder::createVisitor("new, username: " . $user->username);
-            
+
             if($request->get( 'status' ) === "available"){
                 MailController::send(Player::isPlayersNeeded());
             }
-            
+
 			return \Response::json(['status' => "OK"]);
 		}
-		
+
 		public function setDisablePlayer($id) {
 			$player = Player::find($id);
 			if($player === null){
@@ -432,7 +432,7 @@
 			$player->save();
 			return \Response::json(['status' => 'OK']);
 		}
-		
+
 		public function setActivePlayer($id) {
 			$player = Player::find($id);
             if($player === null){
