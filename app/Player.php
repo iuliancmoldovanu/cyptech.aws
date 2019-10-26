@@ -3,7 +3,7 @@
 
 	use Carbon\Carbon;
     use Illuminate\Database\Eloquent\Model;
-    use Illuminate\Http\Response;
+    use Exception;
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Session;
 
@@ -17,7 +17,7 @@
 		{
 			return $this->belongsTo('App\User');
 		}
-		
+
 		public function games(){
 			return $this->belongsToMany(Game::class)->withPivot('team');;
 		}
@@ -402,13 +402,13 @@
 			}
 			return $enum;
 		}
-		
+
 		public function scopeGetPlayersList(){
 			$users = User::with('player')
 				->join('players', 'players.user_id', '=', 'users.id')
 				->orderBy('players.last_confirm', 'desc')
 				->get();
-			
+
 			$numbering = 1;
 			foreach ($users as $key => $user)
 			{
@@ -432,10 +432,28 @@
 
 		public static function getLastAccess(){
             $last_access = Session::get("last_access");
-		    if(!isset($last_access)){
+
+		    if(isset($last_access)){
+                return $last_access;
+            }
+
+            $User = Auth::user();
+            if(is_null($User)){
                 return Carbon::now()->format('D, jS \\of F Y H:i');
             }
-            return $last_access;
+
+            if($User->total_login === 0){
+                return Carbon::now()->format('D, jS \\of F Y H:i');
+            }
+
+            try{
+                Session::put("last_access", $User->last_access_at);
+                $User->last_access_at = Carbon::now();
+                $User->save();
+                return Session::get("last_access");
+            }catch (Exception $e){
+                return Carbon::now()->format('D, jS \\of F Y H:i');
+            }
         }
-		
+
 	}

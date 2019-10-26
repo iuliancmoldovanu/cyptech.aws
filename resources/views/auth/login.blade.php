@@ -1,3 +1,4 @@
+<?php Session::forget("last_access"); ?>
 @extends('layouts.app')
 
 @section('content')
