@@ -171,19 +171,19 @@
                 <li class="{{ (Request::is('dashboard')) ? 'active' : '' }}">
                     <a href="{{ URL::to('dashboard') }}">
                         <i class="fa fa-dashboard"></i>
-                        <span>Dashboard</span>
+                        <span class="{{ (Request::is('dashboard')) ? 'text-bold' : '' }}">Dashboard</span>
                     </a>
                 </li>
                 <li class="{{ (Request::is('games')) ? 'active' : '' }}">
                     <a href="{{ URL::to('games') }}">
                         <i class="fa fa-futbol-o" aria-hidden="true"></i>
-                        <span>Games</span>
+                        <span class="{{ (Request::is('games')) ? 'text-bold' : '' }}">Games</span>
                     </a>
                 </li>
                 <li class="{{ (Request::is('ranking')) ? 'active' : '' }}">
                     <a href="{{ URL::to('ranking') }}">
                         <i class="fa fa-line-chart" aria-hidden="true"></i>
-                        <span>Ranking</span>
+                        <span class="{{ (Request::is('ranking')) ? 'text-bold' : '' }}">Ranking</span>
                     </a>
                 </li>
                 <li class="hide">
@@ -201,16 +201,16 @@
                         </a>
 
                         <ul class="treeview-menu">
-                            <li>
+                            <li class="{{ (Request::is('admin/players')) ? 'active' : '' }}">
                                 <a href="{{ URL::to('admin/players') }}">
                                     <i class="fa fa-users"></i>
-                                    <span class="{{ (Request::is('admin/players')) ? 'text-success font-weight-bold' : '' }}">Players</span>
+                                    <span class="{{ (Request::is('admin/players')) ? 'text-bold' : '' }}">Players</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="{{ (Request::is('admin/games')) ? 'active' : '' }}">
                                 <a href="{{ URL::to('admin/games') }}">
                                     <i class="fa fa-trophy" aria-hidden="true"></i>
-                                    <span class="{{ (Request::is('admin/games')) ? 'text-success font-weight-bold' : '' }}">Games</span>
+                                    <span class="{{ (Request::is('admin/games')) ? 'text-bold' : '' }}">Games</span>
                                 </a>
                             </li>
                         </ul>
@@ -218,10 +218,16 @@
                 @endif
                 @if(Auth::user()->levelAccess() >= 3)
                     <li class="header">Masters</li>
-                    <li>
-                        <a href="{{ URL::to('/master/visitors') }}">
+                    <li class="{{ (Request::is('master/visitors')) ? 'active' : '' }}">
+                        <a href="{{ URL::to('master/visitors') }}">
                             <i class="fa fa-users"></i>
-                            <span class="{{ (Request::is('/master/visitors')) ? 'text-success font-weight-bold' : '' }}">Visitors</span>
+                            <span class="{{ (Request::is('master/visitors')) ? 'text-bold' : '' }}">Visitors</span>
+                        </a>
+                    </li>
+                    <li class="{{ (Request::is('master/logs')) ? 'active' : '' }}">
+                        <a href="{{ URL::to('master/logs') }}">
+                            <i class="fa fa-calendar"></i>
+                            <span class="{{ (Request::is('master/logs')) ? 'text-bold' : '' }}">Logs</span>
                         </a>
                     </li>
                 @endif

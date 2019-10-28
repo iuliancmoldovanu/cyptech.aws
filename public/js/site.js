@@ -20,16 +20,8 @@ let myFunction = function(){
     if(seconds_left <= 0){ // if timestamp now is bigger than timestamp session, session terminated logout the user
 
         if( typeof bootbox === "undefined" ){ // refresh
-
             // refresh the session
-            $.get("/reload_session", function(data){
-                session_start_at = data.session_start_at;
-                lifetime = data.lifetime;
-                session = ((session_start_at+lifetime)-(Math.floor(Date.now()/1000)))*1000; // total duration of this session in milliseconds
-                run = session-60000 <= 0 ? 1000 : session-60000; // setInterval when reach 60000 milliseconds
-                interval = setInterval(myFunction, run);
-            });
-
+            location.reload();
             return;
         }
 

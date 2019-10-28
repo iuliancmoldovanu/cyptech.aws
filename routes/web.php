@@ -16,17 +16,18 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 Route::get( 'reload_session', 'SessionController@reloadSession' );
 
 // Super User
-Route::group(['middleware' => ['master']], function () { // authenticated Super Admin users
-    Route::get( '/master/visitors', 'VisitorsController@index' );
-    Route::get( '/master/visitors_table', 'VisitorsController@table' );
+Route::group([ 'prefix' => 'master', 'middleware' => ['master']], function () { // authenticated Super Admin users
+    Route::get( 'visitors', 'VisitorsController@index' );
+    Route::get( 'visitors_table', 'VisitorsController@table' );
     /*
      * show laravel.log
      */
-    Route::get( '/syslog/clear', 'MasterController@clearLog');
-    Route::get('/syslog/{index?}', 'MasterController@readLog');
+    Route::get( 'syslog/clear', 'MasterController@clearLog');
+    Route::get('syslog/{index?}', 'MasterController@readLog');
 
     Route::get('phpinfo', function(){ phpinfo(); });
 
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 });
 
 // Admin
