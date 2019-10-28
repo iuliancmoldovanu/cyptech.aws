@@ -230,6 +230,12 @@
                             <span class="{{ (Request::is('master/logs')) ? 'text-bold' : '' }}">Logs</span>
                         </a>
                     </li>
+                    <li class="{{ (Request::is('master/activity')) ? 'active' : '' }}">
+                        <a href="{{ URL::to('master/activity') }}">
+                            <i class="fa fa-calendar"></i>
+                            <span class="{{ (Request::is('master/activity')) ? 'text-bold' : '' }}">Activity</span>
+                        </a>
+                    </li>
                 @endif
             </ul>
         </section>

@@ -31,7 +31,7 @@ Route::group([ 'prefix' => 'master', 'middleware' => ['master']], function () { 
 });
 
 // Admin
-Route::group(['middleware' => ['admin']], function () { // authenticated Admin users
+Route::group(['middleware' => ['admin', 'activity']], function () { // authenticated Admin users
     Route::get('admin/users', 'UserController@getIndex');
     Route::get('admin/users/index/{one?}/{two?}/{three?}/{four?}/{five?}', 'UserController@getIndex');
     Route::get('admin/users/list', 'UserController@getList');
@@ -68,7 +68,7 @@ Route::group(['middleware' => ['admin']], function () { // authenticated Admin u
 });
 
 
-Route::group(['middleware' => ['auth']], function () { // authenticated Admin users
+Route::group(['middleware' => ['auth', 'activity']], function () { // authenticated Admin users
     Route::get('/', 'AppController@isUserLogged');
     Route::get('/dashboard', 'AppController@dashboard');
     Route::get('/profile', 'AppController@profile');
