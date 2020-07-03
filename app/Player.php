@@ -456,4 +456,62 @@
             }
         }
 
+        /**
+         * @param $availablePlayers
+         * @param $set_generated
+         */
+        public static function updateActive( $availablePlayers, $set_generated): void
+        {
+            $uPlayers = [];
+            foreach ($availablePlayers as $u) {
+
+                $uPlayers[] = [
+                    "game_id" => $set_generated->id,
+                    "player_id" => $u->id,
+                    "team" => $u->current_team,
+                ];
+
+                if ($set_generated->generated_by > 0) {
+                    if ($set_generated->result === 'draw') {
+                        $u->games_draw += 1;
+                        $u->points += 1;
+                    }else{
+                        if ($u->current_team === $set_generated->result) {
+                            $u->games_won += 1;
+                            $u->points += 3;
+                        }else{
+                            $u->games_lost += 1;
+                        }
+                    }
+
+                    $u->total_games += 1;
+                    $u->status = 'waiting';
+                    $u->current_team = null;
+                }
+                $u->save();
+            }
+            \DB::table('game_player')->insert($uPlayers); // Query Builder approach
+        }
+
+
+        /**
+         * @param $unavailablePlayers
+         */
+        public static function updateUnavailable($unavailablePlayers): void
+        {
+            foreach ($unavailablePlayers as $u) {
+                $unavailableFor = (int) $u->unavailable_for - 1;
+                if (!$unavailableFor) {
+                    $u->status = 'waiting';
+                }
+                $u->unavailable_for = $unavailableFor
+                    ? ($unavailableFor === 1
+                        ? '1 week'
+                        : $unavailableFor . " weeks")
+                    : '0';
+
+                $u->save();
+            }
+        }
+
 	}

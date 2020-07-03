@@ -187,4 +187,33 @@
             $newGame->starts_at = $gameManager->getNextDateGame();
             $newGame->save ();
         }
+
+
+        /**
+         * @param Game $lastGame
+         */
+        public static function updateActive(Game $lastGame): void
+        {
+            $gameManager = new GameManager();
+
+            if(!$gameManager->isCurrentGameCancelled()){
+                if($lastGame){
+                    // update players
+                    $players = Player::whereIn ('status', ['available', 'unavailable'])->get()->groupBy('status');
+
+                    Player::updateUnavailable($players['unavailable'] ?? []);
+                    Player::updateActive($players['available'] ?? [], $lastGame);
+                    // update current game
+
+                    $lastGame->status = $lastGame->generated_by > 0 ? 'completed' : 'canceled';
+                    $lastGame->generated_by = $lastGame->generated_by === 0 ? '-1' : $lastGame->generated_by;
+                    $lastGame->current = 0;
+                    $lastGame->save();
+                    \Log::info("The game {$lastGame->status} by " . (auth()->user() ? auth()->user()->username : "CronTab") . " on ".Carbon::now().".");
+
+                    self::createGame();
+                }
+            }
+
+        }
 	}

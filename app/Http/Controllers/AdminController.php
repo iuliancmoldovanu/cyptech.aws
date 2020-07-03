@@ -100,61 +100,8 @@
 
 		public function complete_game ( Request $request )
 		{
-			$players = Player::all ();
-			// get current game that has not teams generated
-			$last_game = Game::getCurrentWeekGame ();
-			try {
-				foreach ( $players as $player )
-				{
-					if ( $player->status == 'available' )
-					{
-						if ( $request->result == 'red' && $player->current_team == 'red' )
-						{
-							$player->games_won += 1;
-							$player->points += 3;
-						} elseif ( $request->result == 'green' && $player->current_team == 'green' )
-						{
-							$player->games_won += 1;
-							$player->points += 3;
-						} elseif ( $request->result == 'draw' )
-						{
-							$player->games_draw += 1;
-							$player->points += 1;
-						} else
-						{
-							$player->games_lost += 1;
-						}
-
-                        $this->updateGamePlayer($player, $last_game);
-
-                        $player->total_games += 1;
-                        $player->status = 'waiting';
-                        $player->current_team = null;
-					}
-					if ( $player->status == 'unavailable' )
-					{
-						if ( $player->unavailable_for == 2 )
-						{
-							$player->unavailable_for = ( substr ( $player->unavailable_for, 0, 1 ) - 1 ) . ' week';
-						} elseif ( $player->unavailable_for > 2 )
-						{
-							$player->unavailable_for = ( substr ( $player->unavailable_for, 0, 1 ) - 1 ) . ' weeks';
-						} else
-						{
-							$player->unavailable_for = '0';
-							$player->status = 'waiting';
-						}
-					}
-					$player->save ();
-				}
-				$last_game->result = $request->result;
-				$last_game->current = 0;
-				$last_game->status = 'completed';
-				$last_game->save ();
-
-                \Log::info(Auth::user()->username . " on ".Carbon::now()." completed the game");
-
-//                Game::createGame();
+		    try{
+                Game::updateActive(Game::orderBy( 'id', 'desc' )->first()); // update current game
                 return \Response::json(['status' => "success", 'message' => "Current game has been completed"]);
 			} catch ( \Exception $e )
 			{
